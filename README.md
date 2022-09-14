@@ -1,5 +1,5 @@
 <div>
-				<img src="../../utrdb/Logo/Logo-removebg-preview.png.bak2" style="width:180px;height:100px; margin-right: 20px" align="left">
+				<img src="./UTRdblogo.png" style="width:180px;height:100px; margin-right: 20px" align="left">
 				<h1>UTRdb</h1>
 				<h3>A curated database of 5' and 3' untranslated sequences of eukaryotic mRNAs</h3>
 			</div>

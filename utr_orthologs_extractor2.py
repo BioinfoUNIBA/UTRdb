@@ -44,7 +44,3 @@ with open(logfile,'a', 0) as f, open(outfile,'a', 0) as g:
 						  			(gene_id, gene_name_id, taxonomy_level, species, ortholog))
 			#time.sleep(5)  
 	f.write('Orthologs extraction COMPLETE!\n')		
-
-
-
-

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # coding: utf-8
 
 import os
@@ -63,93 +63,75 @@ def genomic_pos(line):
 			if utr_start < editing_start and utr_end > editing_end: #phast interna
 				genomic_editing_start = str((editing_start - utr_start)+1)
 				genomic_editing_end = str(((editing_start - utr_start)+1) + overlap)
-				#print 'editing_interna_' + str(line) + genomic_editing_start  + ' ' + genomic_editing_end + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start < editing_start and utr_end < editing_end: #phast cavallo 3 primo
 				genomic_editing_start = str((editing_start - utr_start)+1)
 				genomic_editing_end = str(((editing_start - utr_start)+1) + overlap)
-				#print 'editing_cavallo_3_primo_' + str(line), genomic_editing_start + ' ' + genomic_editing_end + ' ' + str(editing_start), str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start > editing_start and utr_end > editing_end: #phast cavallo 5 primo
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap)
-				#print 'editing_cavallo_5_primo_' + str(line) + genomic_editing_start + ' ' + genomic_editing_end + ' ' + str(utr_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start > editing_start and utr_end < editing_end: #phast esterna > utr_length
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap)
-				#print 'editing_esterna' + str(line) + genomic_editing_start + ' ' + genomic_editing_end + ' ' + str(utr_start), str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start == editing_start and utr_end == editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap)
-				#print 'editing_uguale_utr_length' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start < editing_start and utr_end == editing_end:
 				genomic_editing_start = str((editing_start - utr_start)+1)
 				genomic_editing_end = str(((editing_start - utr_start)+1) + overlap)
-				#print 'editing_uguale_al_3_primo_e_maggiore_del_5_primo' + str(line) +  genomic_editing_start  + ' ' + genomic_editing_end + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start > editing_start and utr_end == editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_uguale_al_3_primo_e_minore_del_5_primo' + str(line) +  genomic_editing_start  + ' ' + genomic_editing_end + ' ' + str(utr_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start == editing_start and utr_end > editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_uguale_al_5_primo_e_minore_del_3_primo' + str(line) +  genomic_editing_start  + ' ' + genomic_editing_end + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start == editing_start and utr_end < editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_uguale_al_5_primo_e_maggiore_del_3_primo' + str(line) +  genomic_editing_start  + ' ' + genomic_editing_end + ' ' + str(editing_start), str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 		else:
 			if utr_start < editing_start and utr_end > editing_end: #phast interna
 				genomic_editing_start = str((utr_end - editing_end)+1)
 				genomic_editing_end = str(((utr_end - editing_end)+1) + overlap)
-				#print 'editing_interna_' + str(line) + genomic_editing_start + ' ' + genomic_editing_end + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start > editing_start and utr_end > editing_end: #phast cavallo 3 primo
 				genomic_editing_start = str((utr_end - editing_end)+1)
 				genomic_editing_end = str(((utr_end - editing_end)+1) + overlap)
-				#print 'editing_cavallo_3_primo_' + str(line), str((utr_end - editing_end)+1) + ' ' + str(((utr_end - editing_end)+1) + overlap) + ' ' + str(utr_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start < editing_start and utr_end < editing_end: #phast cavallo 5 primo
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_cavallo_5_primo_' + str(line) + ' ' + str(1) + ' ' + str(1 + overlap) + ' ' + str(editing_start) + ' ' + str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start > editing_start and utr_end < editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_esterna_' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(utr_start), str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start == editing_start and utr_end == editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_uguale_utr_length' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start == editing_start and utr_end < editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_uguale_al_3_primo_e_maggiore_del_5_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(editing_start), str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start == editing_start and utr_end > editing_end:
 				genomic_editing_start = str((utr_end - editing_end)+1)
 				genomic_editing_end = str(((utr_end - editing_end)+1) + overlap)
-				#print 'editing_uguale_al_3_primo_e_minore_del_5_primo' + str(line) + str((utr_end - editing_end)+1) + ' ' + str(((utr_end - editing_end)+1) + overlap) + ' ' + str(utr_start), str(utr_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(utr_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 			elif utr_start > editing_start and utr_end == editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
 				return(genomic_editing_start, genomic_editing_end, chrom, str(utr_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
-				#print 'editing_uguale_al_5_primo_e_minore_del_3_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(utr_start), str(editing_end)
 			elif utr_start < editing_start and utr_end == editing_end:
 				genomic_editing_start = str(1)
 				genomic_editing_end = str(1 + overlap) 
-				#print 'editing_uguale_al_5_primo_e_maggiore_del_3_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(editing_start), str(editing_end)
 				return(genomic_editing_start, genomic_editing_end, chrom, str(editing_start), str(editing_end), strand, rel_canvas_pos(genomic_editing_start, genomic_editing_end, utr_length))
 
 df = pd.read_csv(infile2, sep='\t')

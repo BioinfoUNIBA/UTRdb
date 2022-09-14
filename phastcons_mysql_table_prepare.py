@@ -60,98 +60,80 @@ def genomic_pos(line):
 			if utr_start < phast_start and utr_end > phast_end: #phast interna
 				genomic_phast_start = str((phast_start - utr_start)+1)
 				genomic_phast_end = str(((phast_start - utr_start)+1) + overlap)
-				#print 'phast_interna_' + str(line) + genomic_phast_start  + ' ' + genomic_phast_end + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start < phast_start and utr_end < phast_end: #phast cavallo 3 primo
 				genomic_phast_start = str((phast_start - utr_start)+1)
 				genomic_phast_end = str(((phast_start - utr_start)+1) + overlap)
-				#print 'phast_cavallo_3_primo_' + str(line), genomic_phast_start + ' ' + genomic_phast_end + ' ' + str(phast_start), str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start > phast_start and utr_end > phast_end: #phast cavallo 5 primo
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap)
-				#print 'phast_cavallo_5_primo_' + str(line) + genomic_phast_start + ' ' + genomic_phast_end + ' ' + str(utr_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start > phast_start and utr_end < phast_end: #phast esterna > utr_length
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap)
-				#print 'phast_esterna' + str(line) + genomic_phast_start + ' ' + genomic_phast_end + ' ' + str(utr_start), str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start == phast_start and utr_end == phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap)
-				#print 'phast_uguale_utr_length' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start < phast_start and utr_end == phast_end:
 				genomic_phast_start = str((phast_start - utr_start)+1)
 				genomic_phast_end = str(((phast_start - utr_start)+1) + overlap)
-				#print 'phast_uguale_al_3_primo_e_maggiore_del_5_primo' + str(line) +  genomic_phast_start  + ' ' + genomic_phast_end + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start > phast_start and utr_end == phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_uguale_al_3_primo_e_minore_del_5_primo' + str(line) +  genomic_phast_start  + ' ' + genomic_phast_end + ' ' + str(utr_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start == phast_start and utr_end > phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_uguale_al_5_primo_e_minore_del_3_primo' + str(line) +  genomic_phast_start  + ' ' + genomic_phast_end + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start == phast_start and utr_end < phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_uguale_al_5_primo_e_maggiore_del_3_primo' + str(line) +  genomic_phast_start  + ' ' + genomic_phast_end + ' ' + str(phast_start), str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 		else:
 			if utr_start < phast_start and utr_end > phast_end: #phast interna
 				genomic_phast_start = str((utr_end - phast_end)+1)
 				genomic_phast_end = str(((utr_end - phast_end)+1) + overlap)
-				#print 'phast_interna_' + str(line) + genomic_phast_start + ' ' + genomic_phast_end + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start > phast_start and utr_end > phast_end: #phast cavallo 3 primo
 				genomic_phast_start = str((utr_end - phast_end)+1)
 				genomic_phast_end = str(((utr_end - phast_end)+1) + overlap)
-				#print 'phast_cavallo_3_primo_' + str(line), str((utr_end - phast_end)+1) + ' ' + str(((utr_end - phast_end)+1) + overlap) + ' ' + str(utr_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start < phast_start and utr_end < phast_end: #phast cavallo 5 primo
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_cavallo_5_primo_' + str(line) + ' ' + str(1) + ' ' + str(1 + overlap) + ' ' + str(phast_start) + ' ' + str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start > phast_start and utr_end < phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_esterna_' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(utr_start), str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start == phast_start and utr_end == phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_uguale_utr_length' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start == phast_start and utr_end < phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_uguale_al_3_primo_e_maggiore_del_5_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(phast_start), str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start == phast_start and utr_end > phast_end:
 				genomic_phast_start = str((utr_end - phast_end)+1)
 				genomic_phast_end = str(((utr_end - phast_end)+1) + overlap)
-				#print 'phast_uguale_al_3_primo_e_minore_del_5_primo' + str(line) + str((utr_end - phast_end)+1) + ' ' + str(((utr_end - phast_end)+1) + overlap) + ' ' + str(utr_start), str(utr_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(utr_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 			elif utr_start > phast_start and utr_end == phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
 				return(genomic_phast_start, genomic_phast_end, chrom, str(utr_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
-				#print 'phast_uguale_al_5_primo_e_minore_del_3_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(utr_start), str(phast_end)
 			elif utr_start < phast_start and utr_end == phast_end:
 				genomic_phast_start = str(1)
 				genomic_phast_end = str(1 + overlap) 
-				#print 'phast_uguale_al_5_primo_e_maggiore_del_3_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(phast_start), str(phast_end)
 				return(genomic_phast_start, genomic_phast_end, chrom, str(phast_start), str(phast_end), strand, phastconstype, rel_canvas_pos(genomic_phast_start, genomic_phast_end, utr_length))
 
 
 
-dic_line = {} #1       ENSG00000142609 ENST00000642590 - [5_utr] [5_utr_phastcons] [3_utr] [3_utr_phastcons]       
+dic_line = {}        
 with open(infile,'r') as f:
 	for line in f:
 		line = line.strip('\n').split('\t')     

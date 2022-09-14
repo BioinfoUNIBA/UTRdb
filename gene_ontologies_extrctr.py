@@ -27,9 +27,3 @@ for i,j in zip(ids, filter(lambda x: x != '', map(str.strip, html))):
 		if extractor(j[j.find('<opt>'):]):
 			for go in extractor(j):
 				print '{}\t{}'.format(i.strip(),go) 
-
-#	for i,j in zip(ids,html):
-#		print i,j
-#	for i,j in zip(ids,html):
-#		print i.strip(), ''.join(extractor(j))
-

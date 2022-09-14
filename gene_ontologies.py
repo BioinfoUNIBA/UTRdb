@@ -1,4 +1,3 @@
-#!/lustrehome/clogiudice/python/Python-2.7.11/python
 import pandas as pd
 import sys
 import os

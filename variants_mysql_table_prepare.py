@@ -58,98 +58,80 @@ def genomic_pos(line):
 			if utr_start < variant_start and utr_end > variant_end: #phast interna
 				genomic_variant_start = str((variant_start - utr_start)+1)
 				genomic_variant_end = str(((variant_start - utr_start)+1) + overlap)
-				#print 'variant_interna_' + str(line) + genomic_variant_start  + ' ' + genomic_variant_end + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start < variant_start and utr_end < variant_end: #phast cavallo 3 primo
 				genomic_variant_start = str((variant_start - utr_start)+1)
 				genomic_variant_end = str(((variant_start - utr_start)+1) + overlap)
-				#print 'variant_cavallo_3_primo_' + str(line), genomic_variant_start + ' ' + genomic_variant_end + ' ' + str(variant_start), str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start > variant_start and utr_end > variant_end: #phast cavallo 5 primo
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap)
-				#print 'variant_cavallo_5_primo_' + str(line) + genomic_variant_start + ' ' + genomic_variant_end + ' ' + str(utr_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start > variant_start and utr_end < variant_end: #phast esterna > utr_length
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap)
-				#print 'variant_esterna' + str(line) + genomic_variant_start + ' ' + genomic_variant_end + ' ' + str(utr_start), str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start == variant_start and utr_end == variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap)
-				#print 'variant_uguale_utr_length' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start < variant_start and utr_end == variant_end:
 				genomic_variant_start = str((variant_start - utr_start)+1)
 				genomic_variant_end = str(((variant_start - utr_start)+1) + overlap)
-				#print 'variant_uguale_al_3_primo_e_maggiore_del_5_primo' + str(line) +  genomic_variant_start  + ' ' + genomic_variant_end + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start > variant_start and utr_end == variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_uguale_al_3_primo_e_minore_del_5_primo' + str(line) +  genomic_variant_start  + ' ' + genomic_variant_end + ' ' + str(utr_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start == variant_start and utr_end > variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_uguale_al_5_primo_e_minore_del_3_primo' + str(line) +  genomic_variant_start  + ' ' + genomic_variant_end + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start == variant_start and utr_end < variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_uguale_al_5_primo_e_maggiore_del_3_primo' + str(line) +  genomic_variant_start  + ' ' + genomic_variant_end + ' ' + str(variant_start), str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 		else:
 			if utr_start < variant_start and utr_end > variant_end: #phast interna
 				genomic_variant_start = str((utr_end - variant_end)+1)
 				genomic_variant_end = str(((utr_end - variant_end)+1) + overlap)
-				#print 'variant_interna_' + str(line) + genomic_variant_start + ' ' + genomic_variant_end + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start > variant_start and utr_end > variant_end: #phast cavallo 3 primo
 				genomic_variant_start = str((utr_end - variant_end)+1)
 				genomic_variant_end = str(((utr_end - variant_end)+1) + overlap)
-				#print 'variant_cavallo_3_primo_' + str(line), str((utr_end - variant_end)+1) + ' ' + str(((utr_end - variant_end)+1) + overlap) + ' ' + str(utr_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start < variant_start and utr_end < variant_end: #phast cavallo 5 primo
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_cavallo_5_primo_' + str(line) + ' ' + str(1) + ' ' + str(1 + overlap) + ' ' + str(variant_start) + ' ' + str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start > variant_start and utr_end < variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_esterna_' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(utr_start), str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start == variant_start and utr_end == variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_uguale_utr_length' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start == variant_start and utr_end < variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_uguale_al_3_primo_e_maggiore_del_5_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(variant_start), str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start == variant_start and utr_end > variant_end:
 				genomic_variant_start = str((utr_end - variant_end)+1)
 				genomic_variant_end = str(((utr_end - variant_end)+1) + overlap)
-				#print 'variant_uguale_al_3_primo_e_minore_del_5_primo' + str(line) + str((utr_end - variant_end)+1) + ' ' + str(((utr_end - variant_end)+1) + overlap) + ' ' + str(utr_start), str(utr_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(utr_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 			elif utr_start > variant_start and utr_end == variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
 				return(genomic_variant_start, genomic_variant_end, chrom, str(utr_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
-				#print 'variant_uguale_al_5_primo_e_minore_del_3_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(utr_start), str(variant_end)
 			elif utr_start < variant_start and utr_end == variant_end:
 				genomic_variant_start = str(1)
 				genomic_variant_end = str(1 + overlap) 
-				#print 'variant_uguale_al_5_primo_e_maggiore_del_3_primo' + str(line) + str(1) + ' ' + str(1 + overlap) + ' ' + str(variant_start), str(variant_end)
 				return(genomic_variant_start, genomic_variant_end, chrom, str(variant_start), str(variant_end), strand, rel_canvas_pos(genomic_variant_start, genomic_variant_end, utr_length))
 
 
 
-dic_line = {} #1       ENSG00000142609 ENST00000642590 - [5_utr] [5_utr_variants] [3_utr] [3_utr_variants]       
+dic_line = {}       
 
 with open(infile,'r') as f:
 	for line in f:

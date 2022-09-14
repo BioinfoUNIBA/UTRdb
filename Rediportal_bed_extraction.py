@@ -10,7 +10,7 @@ try:
     utrdb_tsv = sys.argv[1]
     intersecting_table = sys.argv[2]
 except:
-    sys.exit('<utrdb_tsv e.g HUMAN_hg38_5_UTR_seq_CAGES_seq.tsv, intersecting_table e.g table1_lifted>')
+    sys.exit('<utrdb_tsv e.g HUMAN_hg38_5_UTR_seq_CAGES_seq.tsv, intersecting_table e.g rediportal_hg19liftedhg38>')
 
 df = pd.read_csv(utrdb_tsv, sep='\t')
 
